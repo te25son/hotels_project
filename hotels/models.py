@@ -3,7 +3,8 @@ from django.db import models
 
 class City(models.Model):
     """
-    Keeps a single city reference
+    Keeps a single city reference that will then
+    be used in relation with :model: `hotels.Hotel`.
     """
     abbrv = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=200, unique=True)

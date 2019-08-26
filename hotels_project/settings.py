@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'hotels.apps.HotelsConfig',
 
     # third party
+    'import_export',
 ]
 
 MIDDLEWARE = [
