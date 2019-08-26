@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local
+    'hotels.apps.HotelsConfig',
 
     # third party
 ]
