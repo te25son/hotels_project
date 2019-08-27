@@ -143,3 +143,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ]
 }
+
+# Cron Job Settings
+
+HOTEL_CSV = config('HOTEL_CSV', cast=str)
+CITY_CSV = config('CITY_CSV', cast=str)
+CSV_USERNAME = config('CSV_USERNAME', cast=str)
+CSV_PASSWORD = config('CSV_PASSWORD', cast=str)
