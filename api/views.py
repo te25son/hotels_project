@@ -5,5 +5,8 @@ from .serializers import CitySerializer
 
 
 class CityAPIView(generics.ListAPIView):
+    """
+    Basic api view that queries all objects in :model: `hotels.City`
+    """
     queryset = City.objects.all()
     serializer_class = CitySerializer
