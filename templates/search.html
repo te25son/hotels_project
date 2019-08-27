@@ -18,4 +18,40 @@
       </form>
     </div>
   </div>
+
+  <script>
+    $(document).ready(function() {
+        BindControls();
+    });
+
+    var cities = [];
+
+    $.getJSON("api/?format=json", function (json) {
+      console.log(json)
+
+    $.each(json, function(key, val) {
+        var city = val.name;
+        cities.push(city);
+        console.log(city);
+        console.log(cities);
+      });
+    });
+
+    function BindControls() {
+      $("#search").autocomplete({
+        source: function(request, response) {
+          var matches = $.map(cities, function(cities){
+            if (cities.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
+              return cities;
+            }
+          });
+          response(matches);
+        },
+        minLength: 0,
+        scroll: true
+      }).focus(function() {
+        $(this).autocomplete("search", "");
+      });
+    };
+  </script>
 {% endblock content %}
