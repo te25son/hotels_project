@@ -3,5 +3,40 @@
 {% block title %}Hotels{% endblock title %}
 
 {% block content %}
-  <h1>Hotels List View</h1>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <h1 class="text-center display-4 mb-5">Hotels in {{ query|title }}</h1>
+      {% if hotels.count > 0 %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Hotel Name</th>
+            <th scope="col">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for hotel in hotels %}
+            <tr>
+              <td>{{ hotel.name }}</td>
+              <td>{{ hotel.loc }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="row justify-content-center">
+        <div style="width:75%" class="alert alert-warning">
+          <div class="text-center">
+            <p><strong>Oh no!</strong></p>
+            <p>We currently don't have any hotels in {{ query|title }}.</p>
+            <p>If you are a hotel owner and would like to add your hotel(s) to our search database, please contact us at <a href="#">fake@hotelsproject.com</a></p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <p class="text-center">
+        <a href="{% url 'search' %}">Try another search</a>
+      </p>
+    </div>
+  </div>
 {% endblock content %}

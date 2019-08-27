@@ -3,5 +3,19 @@
 {% block title %}Search{% endblock title %}
 
 {% block content %}
-  <h1>Search!</h1>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <h1 class="text-center display-4">Where would you like to visit?</h1>
+      <form class="my-3" action="{% url 'hotel_results' %}" method="get">
+        <div class="form-group">
+          <div class="input-group">
+            <input id=search type="text" name="q" class="form-control" class="City name..." required>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 {% endblock content %}
