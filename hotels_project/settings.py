@@ -42,9 +42,11 @@ INSTALLED_APPS = [
 
     # local
     'hotels.apps.HotelsConfig',
+    'api.apps.ApiConfig',
 
     # third party
     'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+# Rest Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
