@@ -1,0 +1,10 @@
+import subprocess
+from apscheduler.schedulers.background import BackgroundScheduler
+
+scheduler = BackgroundScheduler()
+
+@scheduler.scheduled_job('interval', seconds=30)
+def subprocess_to_update_models_from_csv():
+    subprocess.call('python manage.py jobs', shell=True, close_fds=True)
+
+scheduler.start()
