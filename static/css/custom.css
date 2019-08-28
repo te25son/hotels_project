@@ -1,0 +1,31 @@
+body {
+  background-image: url('../imgs/irongrip.png');
+}
+
+a.title {
+  text-decoration: none;
+}
+
+a.title:hover,
+a.title:focus,
+a.title.active,
+a.title:active.focus,
+a.title:active:focus {
+  color: #fff;
+  opacity: 0.1;
+}
+
+.display-4 {
+  font-size: 2.5em;
+}
+
+.jumbotron {
+  background-color: #fff;
+  border-radius: 0 !important;
+}
+
+.title {
+  font-family: 'Righteous', cursive;
+  font-size: 3em;
+  color:#fff;
+}
