@@ -25,6 +25,11 @@ def write_list_to_city_model():
     is a list containing two elements (a city
     abbreviation and a city name), writes each
     element to the City model
+
+    This function is used by the cron job (jobs.py)
+    in the root directory. The function can be
+    removed from the cron job by editing the
+    custom command under hotels.management.commands.jobs.py
     """
     listed_data = get_csv_as_list(settings.CITY_CSV)
     for elem in listed_data:
@@ -40,6 +45,11 @@ def write_list_to_hotel_model():
     is a list containing three elements (a city
     abbreviation, a location, and a name), writes
     each element to the Hotel model.
+
+    This function is used by the cron job (jobs.py)
+    in the root directory. The function can be
+    removed from the cron job by editing the
+    custom command under hotels.management.commands.jobs.py
     """
     listed_data = get_csv_as_list(settings.HOTEL_CSV)
     for elem in listed_data:
