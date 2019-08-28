@@ -1,12 +1,8 @@
 import requests, csv
-from apscheduler.schedulers.background import BackgroundScheduler
 
 from django.conf import settings
 
 from .models import City, Hotel
-
-
-scheduler = BackgroundScheduler()
 
 
 def get_csv_as_list(csv_file):
@@ -53,16 +49,3 @@ def write_list_to_hotel_model():
             loc=elem[1],
             name=elem[2],
         )
-
-
-@scheduler.scheduled_job('interval', minutes=5)
-def run_cron_job():
-    """
-    Runs a cron job in order so that
-    cities are imported before hotels.
-    """
-    write_list_to_city_model()
-    write_list_to_hotel_model()
-
-
-scheduler.start()
