@@ -11,11 +11,10 @@ from hotels.uploader import (
 scheduler = BackgroundScheduler()
 
 
-@scheduler.scheduled_job('interval', minutes=5)
 class Command(BaseCommand):
-    """Cron job to update models every five minutes"""
     write_list_to_city_model()
     write_list_to_hotel_model()
 
+    @scheduler.scheduled_job('interval', seconds=30)
     def handle(self, *args, **kwargs):
         scheduler.start()
