@@ -52,8 +52,10 @@ def write_list_to_hotel_model():
     custom command under hotels.management.commands.jobs.py
     """
     listed_data = get_csv_as_list(settings.HOTEL_CSV)
+    city = None
     for elem in listed_data:
-        city = City.objects.get(abbrv=elem[0])
+        if not city or city.abbrv != elem[0]:
+            city = City.objects.get(abbrv=elem[0])
         hotel, _ = Hotel.objects.get_or_create(
             city=city,
             loc=elem[1],
