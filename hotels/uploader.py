@@ -53,9 +53,10 @@ def write_list_to_hotel_model():
     """
     listed_data = get_csv_as_list(settings.HOTEL_CSV)
     for elem in listed_data:
-        city = City.objects.get(abbrv=elem[0])
         hotel, _ = Hotel.objects.get_or_create(
-            city=city,
             loc=elem[1],
             name=elem[2],
         )
+        if _:
+            hotel.objects.create(city=elem[0])
+            
