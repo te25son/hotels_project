@@ -12,7 +12,7 @@ Make sure that you've set up a virtual environment and run `pip install -r requi
 
 Now that you have Django (as well as all other requirements) installed, migrate the database by typing `python manage.py migrate` into your terminal.
 
-MaykinHotels is a deployment-ready project (in the sense that it's already been deployed), and therefore has some features which are not ready out-of-the-box. One of these features includes the installation of `whitenoise` which serves and stores Django's static files. If you try to run the project by default, you may encounter some nasty errors telling you certain CSS files could not be accessed, especially when trying to run `python manage.py test`.
+Hotels is a deployment-ready project (in the sense that it's already been deployed), and therefore has some features which are not ready out-of-the-box. One of these features includes the installation of `whitenoise` which serves and stores Django's static files. If you try to run the project by default, you may encounter some nasty errors telling you certain CSS files could not be accessed, especially when trying to run `python manage.py test`.
 
 To avoid these nasty errors, run `python manage.py collectstatic`.
 
