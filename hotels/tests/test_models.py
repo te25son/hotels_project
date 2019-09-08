@@ -33,8 +33,12 @@ class CityModelTests(TestCase):
 class HotelModelTests(TestCase):
 
     def setUp(self):
+        self.city = City.objects.create(
+            abbrv='NYC',
+            name='New York'
+        )
         Hotel.objects.create(
-            city=City.objects.create(abbrv='NYC', name='New York'),
+            city=self.city,
             loc='NYC99',
             name='The Plaza',
         )
@@ -50,21 +54,18 @@ class HotelModelTests(TestCase):
 
     def test_hotel_with_same_name_and_city_but_diff_loc_created(self):
         hotel = Hotel.objects.create(
-            city=City.objects.get(name='New York'),
+            city=self.city,
             loc='NYC01',
             name='The Plaza',
         )
         self.assertTrue(isinstance(hotel, Hotel))
 
-    def test_hotel_with_non_unique_loc_and_name_not_created(self):
+    def test_hotel_with_non_unique_loc_and_city_not_created(self):
         try:
             hotel = Hotel.objects.create(
-                city=City.objects.create(
-                    abbrv='AMS',
-                    name='Amsterdam',
-                ),
+                city=self.city,
                 loc='NYC99',
-                name='The Plaza',
+                name='The Plaza Hotel',
             )
         except:
             hotel = None

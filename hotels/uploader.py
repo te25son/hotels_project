@@ -1,6 +1,7 @@
 import requests, csv
 
 from django.conf import settings
+from django.db import IntegrityError
 
 from .models import City, Hotel
 
@@ -57,8 +58,13 @@ def write_list_to_hotel_model():
     city_dict = {city.abbrv:city for city in cities}
 
     for elem in listed_data:
-        hotel, _ = Hotel.objects.get_or_create(
+        hotel, created = Hotel.objects.get_or_create(
             city=city_dict[elem[0]],
             loc=elem[1],
-            name=elem[2],
         )
+        # Update the hotel name if it has been created
+        # or if it has not been created AND the name
+        # is not equal to the element at position 2
+        if created or (not created and hotel.name != elem[2]):
+            hotel.name = elem[2]
+            hotel.save()

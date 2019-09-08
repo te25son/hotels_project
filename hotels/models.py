@@ -27,7 +27,7 @@ class Hotel(models.Model):
     name = models.CharField(max_length=250)
 
     class Meta:
-        unique_together = ('loc', 'name')
+        unique_together = ('city', 'loc')
         ordering = ['city__name', 'name']
 
     def __str__(self):

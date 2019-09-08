@@ -2,6 +2,7 @@ import requests
 
 from django.test import TestCase
 from django.conf import settings
+from django.core.management import call_command
 
 from ..uploader import (
     get_csv_as_list,
@@ -78,3 +79,29 @@ class UploaderTests(TestCase):
         listed_data = get_csv_as_list(settings.CITY_CSV)
         for elem in listed_data:
             self.assertEquals(len(elem[0]), 3)
+
+    def test_hotel_name_updated(self):
+        """
+        Tests that the hotel name is updated if the
+        name is updated on the csv and no new objects
+        have been created
+        """
+        # call custom command to download data
+        call_command('jobs')
+        hotel = Hotel.objects.get(pk=1)
+        hotel.name = 'Test Name'
+        hotel.save()
+        hotel_count = Hotel.objects.all().count()
+
+        self.assertEquals(hotel.name, 'Test Name')
+
+        # call command to update hotel model
+        # this should update the name of the object we just changed
+        write_list_to_hotel_model()
+        try:
+            hotel = Hotel.objects.get(name='Test Name')
+        except:
+            hotel = None
+            
+        self.assertFalse(isinstance(hotel, Hotel))
+        self.assertEquals(hotel_count, Hotel.objects.all().count())

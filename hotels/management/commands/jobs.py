@@ -23,6 +23,5 @@ class Command(BaseCommand):
         and populate the models City and Hotel with
         the read data.
         """
-        print("Sarting jobs command")
         write_list_to_city_model()
         write_list_to_hotel_model()
