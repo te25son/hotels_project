@@ -2,7 +2,7 @@
 
 This is a test project which demonstrates how to access authenticated HTTP files and automatically add the accessed data to Django models.
 
-A working version of this project can be found at [Hotels](https://maykin-hotels.herokuapp.com/).
+A working version of this project can be found at [Hotels](https://hotels-hotels.herokuapp.com/).
 
 ### Before Getting Started
 
