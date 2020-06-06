@@ -22,7 +22,7 @@ class Hotel(models.Model):
     Keeps a single hotel reference related to
     :model: `hotels.City`.
     """
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, blank=True, null=True)
     loc = models.CharField(max_length=100)
     name = models.CharField(max_length=250)
 
